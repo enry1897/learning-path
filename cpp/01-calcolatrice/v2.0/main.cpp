@@ -18,10 +18,12 @@ int main() {
     bool error = false, invalidInput = true, validRes = false;
     std::vector<operation> operations;
 
+    std::cout << "Benvenuto nella calcolatrice!\n   Comandi disponibili:\n  history   → mostra le ultime 10 operazioni\n    clear     → cancella la storia\n    ans       → usa l'ultimo risultato\n    ans N     → usa il risultato N dalla storia\n   q         → esci"<< std::endl;
+
     while (true) {
         
         do {
-            std::cout << "Inserisci il primo numero o 'q' se vuoi terminare l'esecuzione o'ans' se vuoi usare il risultato più vecchio : "<< std::endl;
+            std::cout << "Inserisci numero o comando:\n"<< std::endl;
             std::getline(std::cin, sNum1);
             std::transform(sNum1.begin(), sNum1.end(), sNum1.begin(), [](unsigned char c) {return std::tolower(c); });
 
@@ -29,14 +31,20 @@ int main() {
                 return 0;
             }
             else if (sNum1 == "history") {
+                if (operations.empty())
+                {
+                    std::cout << "Nessuna operazione in memoria.\n" << std::endl;
+                }
+                
                 int iHistoryPosition = 0;
                 for (std::vector<operation>::iterator it = operations.begin(); it != operations.end(); it++) {
                     iHistoryPosition++;
-                    std::cout << iHistoryPosition << ": " << it->Num1 << " " << it->oper << " " << it->Num2 << " = " << it->Res << "\n";
+                    std::cout << iHistoryPosition << ": " << it->Num1 << " " << it->oper << " " << it->Num2 << " = " << it->Res << "\n" << std::endl;
                 }
             }
             else if (sNum1 == "clear") {
                 operations.clear();
+                std::cout << "Storia cancellata.\n" << std::endl; 
             }
             else if (sNum1.find("ans ") != std::string::npos) {
                 index = std::stoi(sNum1.substr(4));
@@ -45,7 +53,7 @@ int main() {
                     invalidInput = false;
                 }
                 else {
-                    std::cout << "Operazione non trovata in memoria\n";
+                    std::cout << "Operazione non trovata in memoria\n" << std::endl;
                 }
             }
             else if (sNum1 == "ans" && validRes) {
@@ -53,7 +61,7 @@ int main() {
                 invalidInput = false;
             }
             else if (sNum1 == "ans" && validRes == false) {
-                std::cout << "Non è presente nessun risultato immagazzinato.\n";
+                std::cout << "Non è presente nessun risultato immagazzinato.\n" << std::endl;
             }
             else {
                 try {
@@ -62,6 +70,7 @@ int main() {
                 }
                 catch(const std::exception& e) {
                     std::cerr << e.what() << '\n';
+                    std::cout << "Input non valido. Inserisci un numero o un comando valido." << std::endl;
                 }
             }
 

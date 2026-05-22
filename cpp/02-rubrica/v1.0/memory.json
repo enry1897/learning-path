@@ -1,0 +1,19 @@
+[
+    {
+        "name": "Felice",
+        "surname": "Mastrangelo",
+        "cell": "328765232",
+        "mail": "felice.mastri@gmail.com",
+        "address": "Via Dante, 34"
+    },
+    {
+        "name": "Gino",
+        "surname": "Strada",
+        "cell": "333567654",
+        "birthday": {
+            "day": 11,
+            "month": 12,
+            "year": 1945
+        }
+    }
+]

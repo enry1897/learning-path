@@ -370,7 +370,6 @@ void removeContact(std::vector<contact> &contacts, std::string filename) {
 
 void listContact(std::vector<contact> &contacts, std::string filename) {
 	char lastLetter = '\0';
-	
 
 	std::sort(contacts.begin(), contacts.end(), [](const contact& a, const contact& b) {return a.name < b.name || (a.name == b.name && a.surname < b.surname);});
 
@@ -380,6 +379,7 @@ void listContact(std::vector<contact> &contacts, std::string filename) {
 			std::cout << "--- " << lastLetter << " ---" << std::endl;
 		}
 		printContact(c);
+		std::cout << std::endl;
 	}
 }
 

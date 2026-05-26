@@ -1,0 +1,19 @@
+[
+    {
+        "name": "Marco",
+        "surname": "Molinaro",
+        "cell": "33375684957",
+        "mail": "marco.molinaro@mail.com",
+        "notes": "Dare 50 euro",
+        "birthday": {
+            "day": 2,
+            "month": 11,
+            "year": 1988
+        }
+    },
+    {
+        "name": "Simone",
+        "surname": "Pietroli",
+        "cell": "33394949504"
+    }
+]
